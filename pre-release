@@ -6,8 +6,6 @@ IMAGE="app/$APP"
 PRE_RELEASE_FILE="PRE_RELEASE_SCRIPT"
 PRE_RELEASE_FILE_PATH="$DOKKU_ROOT/$APP/$PRE_RELEASE_FILE"
 
-echo $PRE_RELEASE_FILE_PATH
-
 if [[ -f "$PRE_RELEASE_FILE_PATH" ]]; then
   echo "-----> Running pre-release script ..."
   COMMAND=$(cat $PRE_RELEASE_FILE_PATH)
