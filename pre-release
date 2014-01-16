@@ -3,11 +3,11 @@ set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 
 APP="$1"
 IMAGE="app/$APP"
-PRE_RELEASE_FILE="PRE_RELEASE_SCRIPT"
+PRE_RELEASE_FILE="PRE_RELEASE_COMMAND"
 PRE_RELEASE_FILE_PATH="$DOKKU_ROOT/$APP/$PRE_RELEASE_FILE"
 
 if [[ -f "$PRE_RELEASE_FILE_PATH" ]]; then
-  echo "-----> Running pre-release script ..."
+  echo "-----> Running pre-release command ..."
   COMMAND=$(cat $PRE_RELEASE_FILE_PATH)
   id=$(docker run -d $IMAGE /bin/bash -c "$COMMAND")
   test $(docker wait $id) -eq 0
